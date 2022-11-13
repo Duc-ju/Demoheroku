@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>HỆ THỐNG ĐỌC HIỂU VÀ TRẢ LỜI CÂU HỎI TIẾNG VIỆT TỰ ĐỘNG</title>
+    <link rel="shortcut icon" href="https://portal.ptit.edu.vn/wp-content/uploads/2016/04/favicon.png">
+    <!-- Favicon-->
+    <!-- <link rel="icon" type="image/x-icon" href="assets/favicon.ico" /> -->
+    <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css' rel='stylesheet'>
+
+    <!-- Font Awesome icons (free version)-->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <!-- <script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script> -->
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="../static/css/main.css" rel="stylesheet" />
+</head>
+
+<body id="page-top">
+    <div class="row" style="margin: 30px 0 15px 0;">
+        <div>
+            <img src="https://portal.ptit.edu.vn/wp-content/uploads/2016/04/ptit-logo.png"
+                style="width: 230px; height:115px;">
+        </div>
+        <div>
+            <p style="margin: 0px 0 0; color: #000000; font-size: 25px;">HỌC VIỆN CÔNG NGHỆ BƯU CHÍNH VIỄN THÔNG</p>
+            <p style="margin: 2px 0 0; color: #D30000; font-size: 18px;">Posts and Telecommunications Institute of Technology</p>
+            <p style="margin: 2px 0 4px;">Khoa công nghệ thông tin I</p>
+            <div class="row">
+                <div class="col-sm-6">
+                    <p>Sinh viên: Nguyễn Thị Ngọc Huyền</p>
+                </div>
+                <div class="col-sm-6">
+                    <p>GVHD: PGS.TS Ngô Xuân Bách</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr style="width:100%; background-color: red;" ;>
+
+    <div class="row" style="margin: 15px 0 15px 0;">
+        <div>
+            <h3 style="text-align: center; font-weight: 550;">ĐỒ ÁN TỐT NGHIỆP</h3>
+            <h4>HỆ THỐNG ĐỌC HIỂU VÀ TRẢ LỜI CÂU HỎI TIẾNG VIỆT TỰ ĐỘNG</h4>
+           
+        </div>
+    </div>
+    <!-- <hr style="width:100%; background-color: red;" ;> -->
+
+    <form method="post" enctype="multipart/form-data" style="width: 73%;">
+        <div class="form-row">
+            <div class="form-group col-md-12">
+                <div class="row">
+                    <div class="col-md-6 col-12">
+                        <label class="inputName">Nội dung</label>
+                    </div>
+                    <div class="col-md-6 col-12">
+                        <label for="inputfile" class="uploadfile float-right"><input type="file" name="inputfile"
+                                id="inputfile" accept=".txt, .pdf">Chọn file</label>
+                        <!-- <input class="float-right" type="file" name="inputfile" id="inputfile"> -->
+                    </div>
+                </div>
+                <textarea rows="8" class="input_group form-control" id="output"  required="" name="context">{{ context }}</textarea>
+            </div>
+            <div class="form-group col-md-12">
+                <label class="inputName">Câu hỏi</label>
+                <textarea rows="2" class="input_group form-control" id="output" required="" name="question">{{ question }}</textarea>
+                <!-- <label class="inputName">Câu hỏi</label>
+                    <input type="text" class="form-control" required="" placeholder="{{ question }}" name="question"> -->
+            </div>
+            <div class="form-group col-md-12">
+                <label class="inputName">Thuật toán</label>
+                <select class="form-control" style="width: 30%;">
+                    <option selected>Biaffine-PhoBert</option>
+                    <option value="1">Biaffine-XLM-Large</option>
+                    <option value="2">CRF-PhoBert</option>
+                    <option value="3">CRF-XLM-Large</option>
+                </select>
+            </div>
+        </div>
+        <div class="mt-2 mb-3">
+            <button class="btn btn-dark float-right" type="submit">Trích xuất</button>
+        </div>
+    </form>
+
+    <div class="col-md-9">
+        <label class="inputName">Câu trả lời</label>
+        <textarea rows="4" class="input_group form-control" id="output" required="" disabled>{{ answer }}</textarea>
+    </div>
+    <script>
+        document.getElementById('inputfile').addEventListener('change', function () {
+            var fr = new FileReader();
+            fr.onload = function () {
+                console.log(fr.result)
+                document.getElementById('output').innerHTML = fr.result;
+            }
+
+            fr.readAsText(this.files[0]);
+        })
+    </script>
+    <!-- Bootstrap core JS-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- Core theme JS-->
+    <!-- <script src="../js/scripts.js"></script> -->
+</body>
+
+</html>
