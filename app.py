@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request
-from model import predict
+# from model import predict
 app = Flask(__name__)
 
 @app.route("/", methods=['GET', 'POST'])
@@ -10,12 +10,12 @@ def home():
       context =  request.form['context']
       question =  request.form['question']
 
-      answer = predict(question=question, context=context)
-      return render_template("home.html", context=context, question=question, answer=answer)
+      # answer = predict(question=question, context=context)
+      return render_template("home.html", context=context, question=question, answer="answer")
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(host='203.162.10.123',port=4452,debug=True) 
 
 
 
